@@ -23,10 +23,8 @@ class Sicktionary(dict):
 
 
     def __setitem__(self, key, value):
-        dict.__setitem__(
-            self, 
-            key, 
-            Sicktionary(value) if isinstance(value, dict) else value)
+        real_value = Sicktionary(value) if isinstance(value, dict) else value
+        dict.__setitem__(self, key, real_value)
 
 
     def is_empty(self):
